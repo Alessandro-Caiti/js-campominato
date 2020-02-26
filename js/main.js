@@ -102,20 +102,28 @@ console.log(posizioneMine);
 
 while ((bandierinePiazzate.length < bandierineMax) && (boom === false)) {
     var bandierinaDaPiazzare = parseInt(prompt("Scrivi un numero da 1 a " + dimensioneCampo));
-    if (!bandierinePiazzate.includes(bandierinaDaPiazzare)) {
-        if (!posizioneMine.includes(bandierinaDaPiazzare)) {
-            bandierinePiazzate.push(bandierinaDaPiazzare);
-            if (bandierinePiazzate.length == bandierineMax) {
-                alert("Incredibile Hai vinto! Vai a giocare al Superenalotto!");
+    if (!isNaN(bandierinaDaPiazzare)) {
+        if ((bandierinaDaPiazzare >= 1) && (bandierinaDaPiazzare <= dimensioneCampo)) {
+            if (!bandierinePiazzate.includes(bandierinaDaPiazzare)) {
+                if (!posizioneMine.includes(bandierinaDaPiazzare)) {
+                    bandierinePiazzate.push(bandierinaDaPiazzare);
+                    if (bandierinePiazzate.length == bandierineMax) {
+                        alert("Incredibile hai piazzato tutte le " + bandierineMax + " bandierine! Vai a giocare al Superenalotto!");
+                    } else {
+                        alert("Bravo, hai piazzato una bandierina, continua a giocare");
+                    }
+                } else {
+                    alert("BOOOM! hai beccato una bomba! Hai piazzato " + bandierinePiazzate.length + " bandierine");
+                    boom = true;
+                }
             } else {
-                alert("Bravo, hai piazzato una bandierina, continua a giocare");
+                alert("Hai già inserito questo numero!")
             }
         } else {
-            alert("BOOOM! hai beccato una bomba! Hai piazzato " + bandierinePiazzate.length + " bandierine" );
-            boom = true;
+            alert("Devi inserire un numero da 1 a " + dimensioneCampo);
         }
     } else {
-        alert("Hai già inserito questo numero!")
+        alert("Devi inserire un numero");
     }
 }
 
