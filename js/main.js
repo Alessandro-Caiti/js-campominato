@@ -137,7 +137,7 @@ function sceltaDifficolta() {
             var dimCampo = 80;
             break;
         case 3:
-            var dimCampo = 17;
+            var dimCampo = 50;
             break;
         default:
         var dimCampo = 100;
